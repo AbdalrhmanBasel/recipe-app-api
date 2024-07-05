@@ -1,0 +1,16 @@
+# docker-compose.yml
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    environment:
+      PYTHONUNBUFFERED: 1
+    restart: unless-stopped
