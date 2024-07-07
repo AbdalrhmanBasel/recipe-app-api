@@ -1,5 +1,5 @@
 ####################################
-# GitHub Actions Configuration for main branch
+# GitHub Actions Configuration for all pushes on GitHub
 ####################################
 
 name: Checks
@@ -35,6 +35,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Waiting For Database Connection
+        run: docker compose run --rm app sh -c "python manage.py wait_for_db"
 
       - name: Test Django Application
         run: docker compose run --rm app sh -c "python manage.py test"
