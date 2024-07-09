@@ -59,5 +59,3 @@ class ModelTests(TestCase):
 
         self.assertEqual(user.first_name, first_name)
         self.assertEqual(user.last_name, last_name)
-
-
